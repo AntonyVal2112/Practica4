@@ -1,0 +1,23 @@
+class Banco {
+    private ArrayList<Cuenta> cuentas;
+
+    public Banco() {
+        cuentas = new ArrayList<>();
+    }
+
+    public void crearCuenta(String nombre, double saldoInicial, String pin) {
+        Cuenta nuevaCuenta = new Cuenta(nombre, saldoInicial, pin);
+        cuentas.add(nuevaCuenta);
+        System.out.println("Cuenta creada exitosamente para " + nombre);
+    }
+
+    public Cuenta accederCuenta(String nombre, String pin) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getNombre().equals(nombre) && cuenta.verificarPin(pin)) {
+                return cuenta;
+            }
+        }
+        System.out.println("Credenciales incorrectas.");
+        return null;
+    }
+}

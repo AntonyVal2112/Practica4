@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Cuenta {
+    private String nombre;
+    private double saldo;
+    private String nip;
+
+    public Cuenta(String nombre, double saldo, String nip) {
+        this.nombre = nombre;
+        this.saldo = saldo;
+        this.nip = nip;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public boolean verificarPin(String pin) {
+        return this.nip.equals(nip);
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void depositar(double monto) {
+        if (monto > 0) {
+            saldo += monto;
+            System.out.println("Depósito exitoso. Nuevo saldo: " + saldo);
+        } else {
+            System.out.println("El monto a depositar debe ser mayor a cero.");
+        }
+    }
+
+    public void retirar(double monto) {
+        if (monto > 0 && monto <= saldo) {
+            saldo -= monto;
+            System.out.println("Retiro exitoso. Nuevo saldo: " + saldo);
+        } else {
+            System.out.println("Fondos insuficientes o monto inválido.");
+        }
+    }
+}
